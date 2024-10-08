@@ -1,0 +1,10 @@
+@font-face {
+  font-family: 'CustomFont';
+  src: url('./assets/PlusJakartaSans-VariableFont_wght.ttf') format('truetype');
+}
+
+body {
+  font-family: 'CustomFont', sans-serif;
+  font-weight: 700;
+  background-color: #f4f7fd;
+}
