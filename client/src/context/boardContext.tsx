@@ -1,6 +1,5 @@
-// boardcontext.tsx
 import { ReactNode, createContext, useContext, useReducer } from "react";
-import { Board, BoardContextState, Invite, Member, Task, User } from "../types";
+import { Board, BoardContextState, Invite, Member, Task } from "../types";
 import { boardReducer } from "../reducers/boardReducer";
 import axios from "axios";
 

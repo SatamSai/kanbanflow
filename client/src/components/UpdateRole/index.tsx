@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useUser } from '../../context/userContext'
 import { MemberEmail, MemberName, Option, ProfileImg, UpdateMemberContainer } from './UpdateRole.styles'
 import ProfileImgURL from '../../assets/Profile.svg'

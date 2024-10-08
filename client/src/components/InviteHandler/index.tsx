@@ -1,6 +1,5 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useModal } from '../../context/modalContext';
 import axios from 'axios';
 import { useBoard } from '../../context/boardContext';
 

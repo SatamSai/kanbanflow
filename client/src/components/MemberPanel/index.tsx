@@ -1,4 +1,3 @@
-import React from 'react'
 import { BoardContainer, BoardWrapper, MemberCard, MemberEmail, MemberInfo, MemberName, MemberRole, MembersList, NoMembersText } from './MembersPanel.styles'
 import { useBoard } from '../../context/boardContext'
 import CustomButton from '../CustomButton'

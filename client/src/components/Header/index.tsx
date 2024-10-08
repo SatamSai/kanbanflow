@@ -1,5 +1,5 @@
 import React from 'react'
-import { ControlsContainer, HeaderContainer, HeadingContainer, LogoContainer, LogoImg, LogoText, Title } from './Header.styles'
+import { HeaderContainer, HeadingContainer, LogoContainer, LogoImg, LogoText, Title } from './Header.styles'
 import LogoImgUrl from '../../assets/logo.svg'
 import { useBoard } from '../../context/boardContext'
 

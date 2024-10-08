@@ -1,4 +1,3 @@
-// boardReducer.ts
 import { BoardContextState, BoardReducerAction } from "../types";
 
 export const boardReducer = (state: BoardContextState, action: BoardReducerAction): BoardContextState => {
@@ -11,11 +10,13 @@ export const boardReducer = (state: BoardContextState, action: BoardReducerActio
             ...state,
             boardInviteInfo: action.payload
         }
-        case "SET_BOARD_TASKS": return {
-            ...state,
-            currentBoard: {
-                ...state.currentBoard,
-                tasks: action.payload
+        case "SET_BOARD_TASKS": {
+            return {
+                ...state,
+                currentBoard: state.currentBoard ? {
+                    ...state.currentBoard,
+                    tasks: action.payload
+                } : state.currentBoard
             }
         };
         case "SET_USERS_ALL_BOARDS": return {
@@ -26,13 +27,14 @@ export const boardReducer = (state: BoardContextState, action: BoardReducerActio
             ...state,
             editableBoard: action.payload
         }
-        case "SET_ALL_BORD_MEMBERS": return {
-            ...state,
-            currentBoard: {
-                ...state.currentBoard,
-                members: action.payload
-            }
-        }
+        case "SET_ALL_BORD_MEMBERS":
+            return {
+                ...state,
+                currentBoard: state.currentBoard ? {
+                    ...state.currentBoard,
+                    members: action.payload
+                } : state.currentBoard
+            };
         default: return state;
     }
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Auth from '../Auth'
 import { FormContainer, Title, Wrapper } from './styles'
 import { Input } from '../components/Input'

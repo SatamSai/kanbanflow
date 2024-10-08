@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { CustomDropdown, Input } from '../Input'
 import CustomButton from '../CustomButton'
 import { AddMemberContent, CopyText, Or } from './AddMember.styles'

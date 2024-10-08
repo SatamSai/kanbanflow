@@ -1,7 +1,6 @@
 import { ReactNode, createContext, useContext, useReducer } from "react";
 import { Task } from "../types";
 import { taskReducer } from "../reducers/taskReducer";
-import axios from "axios";
 
 
 interface TaskProviderProps {
@@ -24,7 +23,6 @@ const defaultState: TaskContextState = {
     setCurrentTaskSubTasks: (_subTasks: Task[]) => { }
 }
 
-const url = import.meta.env.VITE_BACKEND_URL;
 
 const TaskContext = createContext<TaskContextState | undefined>(undefined)
 

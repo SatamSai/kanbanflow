@@ -1,4 +1,4 @@
-import { MouseEvent, useEffect, useState } from 'react'
+import { MouseEvent, useState } from 'react'
 import { Input } from '../components/Input'
 import { Form, FormContainer, Logo, Option, OptionLink, Title, Wrapper } from './styles'
 import CustomButton from '../components/CustomButton'

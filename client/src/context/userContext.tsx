@@ -1,7 +1,6 @@
 import { ReactNode, createContext, useContext, useReducer } from "react";
 import { Member, User, UserContextState } from "../types";
 import { userReducer } from "../reducers/userReducer";
-import axios from "axios";
 
 
 const defaultState: UserContextState = {
