@@ -279,6 +279,7 @@ const CustomDropdown: React.FC<DropdownProps> = ({ fieldVal, handleSetVal, optio
         event: React.FormEvent<HTMLDivElement>,
         option?: IDropdownOption,
     ): void => {
+        console.log(event)
         if (option) {
             handleSetVal(option.key.toString());
         }
