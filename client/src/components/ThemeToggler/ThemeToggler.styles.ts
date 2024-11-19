@@ -4,6 +4,9 @@ export const ThemeTogglerWrapper = styled.div`
     padding: 0px 20px;
     width: 100%;
     box-sizing: border-box;
+    @media (max-width: 400px) {
+        padding: 0px 12px;
+    }
 `
 
 export const ThemeTogglerContainer = styled.div`
@@ -15,6 +18,15 @@ export const ThemeTogglerContainer = styled.div`
     width: 100%;
     box-sizing: border-box;
     margin-bottom: 5px;
+    @media (max-width: 400px) {
+        padding: 13px 20px;
+        justify-content: center;
+        gap: 17px;
+    }
 `
 
-export const ThemeIcon = styled.img``
+export const ThemeIcon = styled.img`
+    @media (max-width: 400px) {
+        scale: 0.85;
+    }
+`

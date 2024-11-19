@@ -12,8 +12,12 @@ export const SideBarContainer = styled.div`
     transition: margin 0.3s ease;
     overflow: visible;
     margin-left: -270px;
+    z-index: 5;
     &.show{
         margin-left: 0px;
+    }
+    @media (max-width: 400px) {
+        padding-top: 3px;
     }
 `
 
@@ -24,6 +28,9 @@ export const SideBarBottomContainer = styled.div`
     width: 100%;
     padding: 30px 0px;
     box-sizing: border-box;
+    @media (max-width: 400px) {
+        padding: 25px 0px;
+    }
 `
 
 export const HideToggle = styled.div`
@@ -53,10 +60,17 @@ margin-top: 20px;
         margin-left: 0px;
         justify-content: center;
     }
+    @media (max-width: 400px) {
+        font-size: 13px;
+        height:45px;
+    }
 `
 
 export const HideImg = styled.img`
     margin: 0px 10px;
     margin-top:2px;
     height: 30px;
+    @media (max-width: 400px) {
+        height: 22px;
+    }
 `

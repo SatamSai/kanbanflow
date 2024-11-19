@@ -11,6 +11,10 @@ export const Title = styled.div`
     padding: 25px 0px;
     color: #828fa3;
     letter-spacing: 2px;
+    @media (max-width: 400px) {
+        font-size: 9.5px;
+        padding: 25px 0px;
+    }
 `
 
 export const BoardItems = styled.ul`

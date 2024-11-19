@@ -18,11 +18,18 @@ export const BoardItemContainer = styled.li<BoardItemProps>`
         background-color: #635fc722;
         color: #635fc7;
     }
+    @media (max-width: 400px) {
+        font-size: 11px;
+        padding: 12px 12px;
+    }
 `
 
 export const BoardItemImg = styled.img`
     margin: 0px 3px;
     margin-top:2px;
+    @media (max-width: 400px) {
+        margin: 0px;
+    }
 `
 export const BoardItemText = styled.div`
     margin: 0px 8px;

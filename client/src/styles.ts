@@ -9,6 +9,9 @@ export const ContentWrapper = styled.div`
     padding-top:80px;
     box-sizing: border-box;
     display: flex;
+    @media (max-width: 400px) {
+        padding-top:60px;
+    }
 `
 
 
