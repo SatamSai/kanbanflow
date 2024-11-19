@@ -4,6 +4,7 @@ import CustomButton from '../CustomButton'
 import { BodyContent, HeadingContainer, InviteOptions, InviteSubTitle, InviteTitle, MembersCount, Terms } from './InviteModal.styles'
 import axios from 'axios'
 import { useModal } from '../../context/modalContext'
+import inviteService from '../../services/inviteServices'
 
 const url = import.meta.env.VITE_BACKEND_URL;
 
@@ -22,7 +23,7 @@ const InviteModal = () => {
                 day: 'numeric',
                 hour: '2-digit',
                 minute: '2-digit',
-                hour12: true // Set to `false` for 24-hour time
+                hour12: true
             });
             setExpiryTime(expTime)
         }
@@ -32,9 +33,7 @@ const InviteModal = () => {
     const handleInvitationAction = async (accept: boolean) => {
         const body = { accept }
         if (boardInviteInfo) {
-            const inviteRes = await axios.post(url + '/board/' + boardInviteInfo.token + '/invitationAction', body, {
-                withCredentials: true
-            })
+            const inviteRes = await inviteService.acceptInvite(boardInviteInfo.token, body)
 
             if (inviteRes.data._id) {
                 setUserAllBoards()

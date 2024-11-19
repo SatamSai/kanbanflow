@@ -6,6 +6,7 @@ import axios from 'axios'
 import { useModal } from '../../context/modalContext'
 import { Task } from '../../types'
 import { useTask } from '../../context/taskContext'
+import taskService from '../../services/taskServices'
 
 
 const defaultInput: Task = {
@@ -103,9 +104,7 @@ const CreateTask = () => {
                 ...tempTask,
                 subTasks: task.subTasks.map(subTask => subTask._id)
             }
-            await axios.post(url + '/tasks/board/' + currentBoard._id + '/createTask', body, {
-                withCredentials: true
-            })
+            await taskService.createTask(currentBoard._id, body)
             setTimeout(() => {
                 updateCurrentBoardAllTasks(currentBoard._id)
             }, 1000)
@@ -122,9 +121,7 @@ const CreateTask = () => {
                 priority: task.priority,
                 subTasks: task.subTasks.map(subTask => subTask._id)
             }
-            await axios.patch(url + '/tasks/' + task._id, body, {
-                withCredentials: true
-            })
+            await taskService.updateTask(task._id, body)
             setTimeout(() => {
                 updateCurrentBoardAllTasks(currentBoard._id)
             }, 1000)
@@ -134,12 +131,9 @@ const CreateTask = () => {
     }
 
     useEffect(() => {
-        console.log("HERE")
-        console.log(editableTaskInfo)
         if (editableTaskInfo)
             setTask(editableTaskInfo)
     }, [editableTaskInfo])
-
     return (
         <>
             <Input label='Task Title' fieldVal={task.title} handleSetVal={handleSetTitle} />

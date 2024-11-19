@@ -5,9 +5,11 @@ import CustomButton from '../components/CustomButton'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import Auth from '../Auth'
+import userService from '../services/userServices'
+import { useUser } from '../context/userContext'
 
 
-interface UserInfo {
+interface UserCreds {
     email: string,
     password: string,
 }
@@ -15,33 +17,32 @@ interface UserInfo {
 const url = import.meta.env.VITE_BACKEND_URL;
 
 const Login = () => {
-    const [userInfo, setUserInfo] = useState<UserInfo>({
+    const [userCreds, setUserCreds] = useState<UserCreds>({
         email: "",
         password: ""
     })
-
+    const { setUserInfo } = useUser()
     const navigate = useNavigate()
 
     const handleSetEmail = (val: string) => {
-        const tempInfo = { ...userInfo }
+        const tempInfo = { ...userCreds }
         tempInfo.email = val
-        setUserInfo(tempInfo)
+        setUserCreds(tempInfo)
     }
 
     const handleSetPassword = (val: string) => {
-        const tempInfo = { ...userInfo }
+        const tempInfo = { ...userCreds }
         tempInfo.password = val
-        setUserInfo(tempInfo)
+        setUserCreds(tempInfo)
     }
     const handleSubmit = async (e: MouseEvent<HTMLButtonElement>) => {
 
         e.preventDefault()
-        if ((userInfo.password == "") || userInfo.email == "") return
+        if ((userCreds.password == "") || userCreds.email == "") return
 
-        const user = await axios.post(url + '/users/login', userInfo, {
-            withCredentials: true
-        })
-        console.log(user)
+        const loggedInUser = await userService.loginUser(userCreds)
+
+        setUserInfo(loggedInUser.data)
         navigate('/')
     }
     return (
@@ -51,8 +52,8 @@ const Login = () => {
                 <FormContainer>
                     <Title>LOGIN</Title>
                     <Form>
-                        <Input label='Email' fieldVal={userInfo.email} handleSetVal={handleSetEmail} />
-                        <Input fieldType="password" label='Password' fieldVal={userInfo.password} handleSetVal={handleSetPassword} />
+                        <Input label='Email' fieldVal={userCreds.email} handleSetVal={handleSetEmail} />
+                        <Input fieldType="password" label='Password' fieldVal={userCreds.password} handleSetVal={handleSetPassword} />
                         <CustomButton text='Submit' onClick={handleSubmit} />
                     </Form>
                     <Option>Don't have account? <OptionLink href='/register'>Register Here</OptionLink></Option>

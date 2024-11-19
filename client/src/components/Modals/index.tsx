@@ -9,6 +9,7 @@ import { useBoard } from '../../context/boardContext'
 import AddMember from '../AddMember'
 import UpdateRole from '../UpdateRole'
 import InviteModal from '../InviteModal'
+import taskService from '../../services/taskServices'
 
 interface Props {
     closeModal: () => void
@@ -29,9 +30,9 @@ const Modals = ({ closeModal }: Props) => {
     const handleDeleteTask = async () => {
         if (!currentTask) return
 
-        await axios.delete(url + '/tasks/' + currentTask._id, {
-            withCredentials: true
-        })
+
+        await taskService.deleteTask(currentTask._id)
+
         deleteTask(currentTask._id)
         toggleShowModal()
     }

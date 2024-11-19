@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Auth from '../Auth'
 import { useUser } from '../context/userContext'
+import userService from '../services/userServices'
 
 
 interface UserInfo {
@@ -57,20 +58,18 @@ const Register = () => {
         e.preventDefault()
         if ((user.password != confirmPassword || confirmPassword == "") || !verifyEmail(user.email) || user.username == "") return
 
-        await axios.post(url + '/users/register', user)
+        await userService.registerUser(user)
 
-        const loggedInUser = await axios.post(url + '/users/login',
-            {
-                email: user.email,
-                password: user.password
-            },
-            {
-                withCredentials: true
-            }
-        )
+        const credsBody = {
+            email: user.email,
+            password: user.password
+        }
+
+        const loggedInUser = await userService.loginUser(credsBody)
         setUserInfo(loggedInUser.data)
         navigate('/')
     }
+
     return (
         <Auth>
             <Wrapper>

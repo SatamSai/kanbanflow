@@ -5,6 +5,7 @@ import BoardItem from '../BoardItem'
 import axios from 'axios'
 import { useBoard } from '../../context/boardContext'
 import { useModal } from '../../context/modalContext'
+import baordService from '../../services/boardServices'
 
 const url = import.meta.env.VITE_BACKEND_URL;
 
@@ -34,9 +35,7 @@ const BoardsList = () => {
     useEffect(() => {
         const fetchBoard = async () => {
             if (selectedBoard) {
-                const boardRes = await axios.get(url + "/board/" + selectedBoard, {
-                    withCredentials: true
-                })
+                const boardRes = await baordService.getBoardById(selectedBoard)
                 const board = boardRes.data
                 setCurrentBoard({
                     _id: board._id,

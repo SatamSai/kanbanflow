@@ -1,6 +1,7 @@
 import React, { ReactNode, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import userService from './services/userServices';
 
 interface AuthProps {
     children: ReactNode;
@@ -15,9 +16,7 @@ const Auth: React.FC<AuthProps> = ({ children }) => {
     useEffect(() => {
         const checkAuth = async () => {
             try {
-                const userRes = await axios.get(url + '/users/check-token', {
-                    withCredentials: true,
-                });
+                const userRes = await userService.checkToken()
 
                 if (userRes.data.error == "Unauthorized") {
                     if (location.pathname !== '/register') {

@@ -2,10 +2,8 @@ import { useEffect } from 'react'
 import { CheckBoxGroup, CustomDropdown } from '../Input'
 import { TaskDesc } from './TaskInfo.styles'
 import { useBoard } from '../../context/boardContext'
-import axios from 'axios'
 import { useTask } from '../../context/taskContext'
-
-const url = import.meta.env.VITE_BACKEND_URL;
+import taskService from '../../services/taskServices'
 
 const TaskInfo = () => {
 
@@ -20,9 +18,7 @@ const TaskInfo = () => {
             status: _status
         }
 
-        await axios.patch(url + "/tasks/" + currentTask._id + '/updateStatus', body, {
-            withCredentials: true
-        })
+        await taskService.updateTaskStatus(currentTask._id, body)
 
         const updatedTaskInfo = {
             ...currentTask,
@@ -40,9 +36,7 @@ const TaskInfo = () => {
             isDone: _isDone
         }
 
-        await axios.patch(url + "/tasks/" + _id + '/updateIsDone', body, {
-            withCredentials: true
-        })
+        await taskService.updateTaskIsDone(_id, body)
 
         const tempSubTasks = [...currentTask.subTasks]
 
@@ -54,18 +48,14 @@ const TaskInfo = () => {
     }
 
     const handleSetTaskInfo = async () => {
-
         if (!currentTask) return
-        const subTaskRes = await axios.get(url + "/tasks/" + currentTask._id + '/getSubTasks', {
-            withCredentials: true
-        })
+        const subTaskRes = await taskService.getSubTasks(currentTask._id)
         setCurrentTaskSubTasks(subTaskRes.data)
     }
 
     useEffect(() => {
         handleSetTaskInfo()
     }, [])
-
 
     return (
         <>

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { useBoard } from '../../context/boardContext';
+import inviteService from '../../services/inviteServices';
 
 const url = import.meta.env.VITE_BACKEND_URL;
 const InviteHandler = () => {
@@ -17,7 +18,7 @@ const InviteHandler = () => {
             const token = queryParams.get('token');
 
             if (token) {
-                const inviteRes = await axios.get(url + '/board/' + token + '/getInviteInfo')
+                const inviteRes = await inviteService.getInviteInfo(token)
                 setBoardInviteInfo(inviteRes.data)
                 navigate('/');
             } else {

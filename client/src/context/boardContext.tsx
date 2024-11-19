@@ -2,6 +2,7 @@ import { ReactNode, createContext, useContext, useReducer } from "react";
 import { Board, BoardContextState, Invite, Member, Task } from "../types";
 import { boardReducer } from "../reducers/boardReducer";
 import axios from "axios";
+import baordService from "../services/boardServices";
 
 interface BoardProviderProps {
     children: ReactNode
@@ -36,9 +37,8 @@ export const BoardProvider: React.FC<BoardProviderProps> = ({ children }) => {
     const [state, dispatch] = useReducer(boardReducer, initialState);
 
     const setUserAllBoards = async () => {
-        const boardsRes = await axios.get(url + "/board", {
-            withCredentials: true
-        })
+        const boardsRes = await baordService.getAllBoards()
+
         dispatch({
             type: "SET_USERS_ALL_BOARDS",
             payload: boardsRes.data
@@ -67,10 +67,8 @@ export const BoardProvider: React.FC<BoardProviderProps> = ({ children }) => {
     }
 
     const fetchMembers = async (_selectedBoard: string) => {
-        const tasksRes = await axios.get(url + "/board/" + _selectedBoard + '/getMembers', {
-            withCredentials: true
-        })
-        const members: Member[] = tasksRes.data
+        const boardMembers = await baordService.getBoardMembers(_selectedBoard)
+        const members: Member[] = boardMembers.data
         dispatch({
             type: "SET_ALL_BORD_MEMBERS",
             payload: members
@@ -79,9 +77,7 @@ export const BoardProvider: React.FC<BoardProviderProps> = ({ children }) => {
 
     const updateCurrentBoardAllTasks = async (_selectedBoard: string) => {
 
-        const tasksRes = await axios.get(url + "/board/" + _selectedBoard + '/getTasks', {
-            withCredentials: true
-        })
+        const tasksRes = await baordService.getBoardTasks(_selectedBoard)
         const tasks: Task[] = tasksRes.data
         dispatch({
             type: "SET_BOARD_TASKS",

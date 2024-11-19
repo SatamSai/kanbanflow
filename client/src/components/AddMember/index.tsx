@@ -4,6 +4,7 @@ import CustomButton from '../CustomButton'
 import { AddMemberContent, CopyText, Or } from './AddMember.styles'
 import axios from 'axios'
 import { useBoard } from '../../context/boardContext'
+import inviteService from '../../services/inviteServices'
 
 const options = ["admin", "editor", "contributor", "viewer", "guest"]
 const url = import.meta.env.VITE_BACKEND_URL;
@@ -28,9 +29,7 @@ const AddMember = () => {
                 boardId: currentBoard._id,
                 role: role
             }
-            const inviteRes = await axios.post(url + '/board/generateInvite', body, {
-                withCredentials: true
-            })
+            const inviteRes = await inviteService.generateInvite(body)
 
             const invitation = inviteRes.data
 

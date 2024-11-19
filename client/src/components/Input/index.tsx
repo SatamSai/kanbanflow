@@ -9,6 +9,7 @@ import HideIconUrl from '../../assets/hide.svg'
 import axios from 'axios';
 import { useBoard } from '../../context/boardContext';
 import { Task } from '../../types';
+import taskService from '../../services/taskServices';
 
 interface InputProps {
     fieldVal: string,
@@ -116,11 +117,13 @@ const SubTaskField: React.FC<TaskFieldProps> = ({ handleAddSelectedItem }) => {
                 setSuggestions([])
                 return
             }
-            const searchResults = await axios.get(url + '/tasks/board/' + currentBoard._id, {
-                params: {
-                    searchTerm: searchTerm
-                }
-            })
+
+            const params = {
+                searchTerm
+            }
+
+            const searchResults = await taskService.searchTask(currentBoard._id, params)
+
             const data = searchResults.data.map((result: Task) => {
                 return {
                     _id: result._id,
@@ -172,7 +175,6 @@ const SubTaskField: React.FC<TaskFieldProps> = ({ handleAddSelectedItem }) => {
 }
 
 const SubTaskGroup: React.FC<GroupFieldProps> = ({ fieldVal, handleAddSelectedItem, label }) => {
-
     return (
         <InputContainer>
             <InputLabel>{label}</InputLabel>
@@ -280,7 +282,6 @@ const CustomDropdown: React.FC<DropdownProps> = ({ fieldVal, handleSetVal, optio
         event: React.FormEvent<HTMLDivElement>,
         option?: IDropdownOption,
     ): void => {
-        console.log(event)
         if (option) {
             handleSetVal(option.key.toString());
         }

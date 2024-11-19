@@ -8,6 +8,7 @@ import ProfileImgURL from '../assets/Profile.svg'
 import axios from 'axios'
 import { useUser } from '../context/userContext'
 import { useNavigate } from 'react-router-dom'
+import userService from '../services/userServices'
 
 const url = import.meta.env.VITE_BACKEND_URL;
 
@@ -26,14 +27,11 @@ const Fullname = () => {
 
     const handleSubmitInfo = async () => {
 
-        const user = await axios.post(url + '/users/submitInfo',
-            {
-                fullname
-            },
-            {
-                withCredentials: true
-            }
-        )
+        const body = {
+            fullname
+        }
+
+        const user = await userService.submitUserInfo(body)
 
         setUserInfo(user.data)
         navigate('/')

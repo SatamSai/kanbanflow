@@ -12,6 +12,7 @@ import { useBoard } from '../context/boardContext'
 import EditIcon from '../assets/editIcon.svg'
 import DeleteIcon from '../assets/trash-solid.svg'
 import axios from 'axios'
+import baordService from '../services/boardServices'
 
 const url = import.meta.env.VITE_BACKEND_URL;
 
@@ -53,9 +54,7 @@ const HomePage = () => {
 
     const handleDeleteBoard = async () => {
         if (currentBoard) {
-            await axios.delete(url + "/board/" + currentBoard._id, {
-                withCredentials: true
-            })
+            await baordService.deleteBoard(currentBoard._id)
             setUserAllBoards()
             setCurrentBoard()
         }
