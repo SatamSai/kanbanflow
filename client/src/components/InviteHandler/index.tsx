@@ -1,10 +1,8 @@
 import { useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import axios from 'axios';
 import { useBoard } from '../../context/boardContext';
 import inviteService from '../../services/inviteServices';
 
-const url = import.meta.env.VITE_BACKEND_URL;
 const InviteHandler = () => {
     const navigate = useNavigate();
     const location = useLocation();

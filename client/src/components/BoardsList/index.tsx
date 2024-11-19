@@ -2,12 +2,10 @@ import { useEffect, useState } from 'react'
 import { BoardItemContainer, BoardItems, Title } from './BoardsList.styles'
 import BoardIcon from '../../assets/board.svg'
 import BoardItem from '../BoardItem'
-import axios from 'axios'
 import { useBoard } from '../../context/boardContext'
 import { useModal } from '../../context/modalContext'
 import baordService from '../../services/boardServices'
 
-const url = import.meta.env.VITE_BACKEND_URL;
 
 const BoardsList = () => {
 

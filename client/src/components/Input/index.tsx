@@ -6,7 +6,6 @@ import { Dropdown, IDropdownOption, IDropdownStyles } from '@fluentui/react';
 import CheckedIconUrl from '../../assets/check.svg'
 import ShowIconUrl from '../../assets/show.svg'
 import HideIconUrl from '../../assets/hide.svg'
-import axios from 'axios';
 import { useBoard } from '../../context/boardContext';
 import { Task } from '../../types';
 import taskService from '../../services/taskServices';
@@ -62,8 +61,6 @@ interface CheckBoxGroupParams {
     items: Task[],
     handleToggleCheckItem: (_id: string, _isDone: boolean) => void
 }
-
-const url = import.meta.env.VITE_BACKEND_URL;
 
 const Input: React.FC<InputProps> = ({ fieldVal, handleSetVal, label, fieldType = "text" }) => {
     const [show, setShow] = useState<boolean>(fieldType != "password")

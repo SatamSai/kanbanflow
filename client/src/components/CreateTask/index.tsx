@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import { CustomDropdown, SubTaskGroup, Input, TextArea } from '../Input'
 import CustomButton from '../CustomButton'
 import { useBoard } from '../../context/boardContext'
-import axios from 'axios'
 import { useModal } from '../../context/modalContext'
 import { Task } from '../../types'
 import { useTask } from '../../context/taskContext'
@@ -26,8 +25,6 @@ const priorityOptions: string[] = [
     "High",
     "Very High"
 ]
-
-const url = import.meta.env.VITE_BACKEND_URL;
 
 const CreateTask = () => {
     const [task, setTask] = useState<Task>(defaultInput)

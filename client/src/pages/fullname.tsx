@@ -5,12 +5,9 @@ import { Input } from '../components/Input'
 import CustomButton from '../components/CustomButton'
 import { ProfileImg } from '../components/UpdateRole/UpdateRole.styles'
 import ProfileImgURL from '../assets/Profile.svg'
-import axios from 'axios'
 import { useUser } from '../context/userContext'
 import { useNavigate } from 'react-router-dom'
 import userService from '../services/userServices'
-
-const url = import.meta.env.VITE_BACKEND_URL;
 
 const Fullname = () => {
     const [firstName, setFirstName] = useState("")

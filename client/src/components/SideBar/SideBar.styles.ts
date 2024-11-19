@@ -9,6 +9,12 @@ export const SideBarContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    transition: margin 0.3s ease;
+    overflow: visible;
+    margin-left: -270px;
+    &.show{
+        margin-left: 0px;
+    }
 `
 
 export const SideBarBottomContainer = styled.div`
@@ -18,4 +24,39 @@ export const SideBarBottomContainer = styled.div`
     width: 100%;
     padding: 30px 0px;
     box-sizing: border-box;
+`
+
+export const HideToggle = styled.div`
+margin-top: 20px;
+    border-radius: 0px 100px 100px 0px;
+    font-size: 15px;
+    height:55px;
+    padding-right: 10px;
+    width: 100%;
+    cursor: pointer;
+    color:  #828fa3;
+    background-color: ${props => props.theme.colors.primaryBg};
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    z-index: 10;
+    margin-left: 120px;
+    transition: all 0.3s ease;
+    &:hover{
+        background-color: #635fc722;
+        color: #635fc7;
+    }
+
+    &.show{
+        border-radius: 0px;
+        margin-left: 0px;
+        justify-content: center;
+    }
+`
+
+export const HideImg = styled.img`
+    margin: 0px 10px;
+    margin-top:2px;
+    height: 30px;
 `

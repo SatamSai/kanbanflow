@@ -3,7 +3,6 @@ import { ColumnsFieldGroup, Input, TextArea } from '../Input'
 import CustomButton from '../CustomButton'
 import { Board } from '../../types'
 import { useBoard } from '../../context/boardContext'
-import axios from 'axios'
 import { useModal } from '../../context/modalContext'
 import baordService from '../../services/boardServices'
 
@@ -13,8 +12,6 @@ const defaultBoard: Board = {
     description: "",
     columns: []
 }
-
-const url = import.meta.env.VITE_BACKEND_URL;
 
 const CreateBoard = () => {
 

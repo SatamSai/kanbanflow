@@ -1,15 +1,11 @@
 import { ReactNode, createContext, useContext, useReducer } from "react";
 import { Board, BoardContextState, Invite, Member, Task } from "../types";
 import { boardReducer } from "../reducers/boardReducer";
-import axios from "axios";
 import baordService from "../services/boardServices";
 
 interface BoardProviderProps {
     children: ReactNode
 }
-
-const url = import.meta.env.VITE_BACKEND_URL;
-
 
 export const initialState: BoardContextState = {
     usersAllBoards: [],

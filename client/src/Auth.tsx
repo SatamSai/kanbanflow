@@ -1,13 +1,10 @@
 import React, { ReactNode, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import axios from 'axios';
 import userService from './services/userServices';
 
 interface AuthProps {
     children: ReactNode;
 }
-
-const url = import.meta.env.VITE_BACKEND_URL;
 
 const Auth: React.FC<AuthProps> = ({ children }) => {
     const navigate = useNavigate();
@@ -32,7 +29,6 @@ const Auth: React.FC<AuthProps> = ({ children }) => {
                     }
                 }
             } catch (error) {
-                console.error('Error checking token:', error);
                 if (location.pathname !== '/register') {
                     navigate('/login');
                 }

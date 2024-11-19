@@ -2,7 +2,6 @@ import { MouseEvent, useState } from 'react'
 import { Input } from '../components/Input'
 import { Form, FormContainer, Logo, Option, OptionLink, Title, Wrapper } from './styles'
 import CustomButton from '../components/CustomButton'
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import Auth from '../Auth'
 import userService from '../services/userServices'
@@ -13,8 +12,6 @@ interface UserCreds {
     email: string,
     password: string,
 }
-
-const url = import.meta.env.VITE_BACKEND_URL;
 
 const Login = () => {
     const [userCreds, setUserCreds] = useState<UserCreds>({

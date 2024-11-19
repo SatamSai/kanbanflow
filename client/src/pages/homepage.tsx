@@ -11,10 +11,7 @@ import MembersPanel from '../components/MemberPanel'
 import { useBoard } from '../context/boardContext'
 import EditIcon from '../assets/editIcon.svg'
 import DeleteIcon from '../assets/trash-solid.svg'
-import axios from 'axios'
 import baordService from '../services/boardServices'
-
-const url = import.meta.env.VITE_BACKEND_URL;
 
 const HomePage = () => {
 
@@ -23,6 +20,8 @@ const HomePage = () => {
     const { currentBoard, updateCurrentBoardAllTasks, fetchMembers, setEditableBoard, boardInviteInfo, setUserAllBoards, setCurrentBoard } = useBoard()
 
     const [showBoard, setShowBoard] = useState(true)
+
+    const [showSidebar, setShowSidebar] = useState(true)
 
     useEffect(() => {
         if (currentBoard?._id) {
@@ -65,8 +64,8 @@ const HomePage = () => {
             <Header />
             <Modals closeModal={toggleShowModal} />
             <ContentWrapper>
-                <SideBar />
-                <PanelWrapper>
+                <SideBar showSidebar={showSidebar} setShowSidebar={setShowSidebar} />
+                <PanelWrapper className={`${showSidebar ? '' : 'show'}`}>
                     {
                         currentBoard?._id &&
                         <>
@@ -90,7 +89,7 @@ const HomePage = () => {
                     }
                 </PanelWrapper>
             </ContentWrapper>
-        </Auth>
+        </Auth >
     )
 }
 

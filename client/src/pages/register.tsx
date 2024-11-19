@@ -3,7 +3,6 @@ import { Input } from '../components/Input'
 import { Form, FormContainer, Logo, Option, OptionLink, Title, Wrapper } from './styles'
 import CustomButton from '../components/CustomButton'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
 import Auth from '../Auth'
 import { useUser } from '../context/userContext'
 import userService from '../services/userServices'
@@ -14,8 +13,6 @@ interface UserInfo {
     email: string,
     password: string,
 }
-
-const url = import.meta.env.VITE_BACKEND_URL;
 
 const Register = () => {
     const [user, setUser] = useState<UserInfo>({

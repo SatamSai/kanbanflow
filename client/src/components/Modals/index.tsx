@@ -4,7 +4,6 @@ import CreateBoard from '../CreateBoard'
 import TaskInfo from '../TaskInfo'
 import { useModal } from '../../context/modalContext'
 import { useTask } from '../../context/taskContext'
-import axios from 'axios'
 import { useBoard } from '../../context/boardContext'
 import AddMember from '../AddMember'
 import UpdateRole from '../UpdateRole'
@@ -14,8 +13,6 @@ import taskService from '../../services/taskServices'
 interface Props {
     closeModal: () => void
 }
-
-const url = import.meta.env.VITE_BACKEND_URL;
 
 const Modals = ({ closeModal }: Props) => {
     const { show, key, setModalKey, toggleShowModal } = useModal()

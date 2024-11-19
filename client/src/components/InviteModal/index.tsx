@@ -2,11 +2,8 @@ import { useEffect, useState } from 'react'
 import { useBoard } from '../../context/boardContext'
 import CustomButton from '../CustomButton'
 import { BodyContent, HeadingContainer, InviteOptions, InviteSubTitle, InviteTitle, MembersCount, Terms } from './InviteModal.styles'
-import axios from 'axios'
 import { useModal } from '../../context/modalContext'
 import inviteService from '../../services/inviteServices'
-
-const url = import.meta.env.VITE_BACKEND_URL;
 
 const InviteModal = () => {
 

@@ -61,7 +61,10 @@ export const PanelWrapper = styled.div`
     flex-direction:column;
     width: calc(100% - 270px);
     background-color: ${({ theme }) => theme.colors.secondaryBg};
-
+    transition: width 0.3s ease;
+    &.show{
+        width: 100%;
+    }
 `
 export const PanelHeading = styled.div`
     display: flex;

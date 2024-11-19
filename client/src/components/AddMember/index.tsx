@@ -2,12 +2,10 @@ import { useState } from 'react'
 import { CustomDropdown, Input } from '../Input'
 import CustomButton from '../CustomButton'
 import { AddMemberContent, CopyText, Or } from './AddMember.styles'
-import axios from 'axios'
 import { useBoard } from '../../context/boardContext'
 import inviteService from '../../services/inviteServices'
 
 const options = ["admin", "editor", "contributor", "viewer", "guest"]
-const url = import.meta.env.VITE_BACKEND_URL;
 const baseLink = import.meta.env.VITE_INVITE_BASE_URL
 
 
