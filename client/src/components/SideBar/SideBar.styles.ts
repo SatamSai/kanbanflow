@@ -42,7 +42,7 @@ margin-top: 20px;
     justify-content: end;
     z-index: 10;
     margin-left: 120px;
-    transition: all 0.3s ease;
+    transition: border 0.3s ease, margin 0.3s ease, justify-content 0.3s ease;
     &:hover{
         background-color: #635fc722;
         color: #635fc7;
