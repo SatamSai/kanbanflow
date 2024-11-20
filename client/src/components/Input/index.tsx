@@ -241,30 +241,52 @@ const CheckBoxGroup: React.FC<CheckBoxGroupParams> = ({ items, handleToggleCheck
 const dropdownStyles: Partial<IDropdownStyles> = {
     dropdown: {
         borderRadius: '5px',
-        borderColor: 'rgba(130,143,163,.25',
+        borderColor: 'rgba(130,143,163,.25)',
         fontSize: '13px',
         height: '40px',
-        marginBottom: '5px'
+        marginBottom: '5px',
+        '@media (max-width: 400px)': {
+            fontSize: '10px',
+            height: '30px',
+        },
     },
     dropdownItem: {
         fontSize: '13px',
         lineHeight: '40px',
+        '@media (max-width: 400px)': {
+            fontSize: '10px',
+            lineHeight: '30px',
+        },
     },
     dropdownItemSelected: {
         fontSize: '13px',
         lineHeight: '40px',
+        '@media (max-width: 400px)': {
+            fontSize: '12px',
+            lineHeight: '30px',
+        },
     },
     title: {
         borderRadius: '5px',
         fontSize: '13px',
         height: '40px',
         lineHeight: '40px',
+        '@media (max-width: 400px)': {
+            fontSize: '10px',
+            height: '30px',
+            lineHeight: '30px',
+        },
     },
     caretDownWrapper: {
         height: '40px',
         lineHeight: '40px',
+        '@media (max-width: 400px)': {
+            height: '35px',
+            lineHeight: '30px',
+        },
     },
 };
+
 
 const CustomDropdown: React.FC<DropdownProps> = ({ fieldVal, handleSetVal, options, label }) => {
 

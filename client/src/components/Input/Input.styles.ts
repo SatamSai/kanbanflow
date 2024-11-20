@@ -18,17 +18,24 @@ interface SuggestedItemProps {
 }
 
 export const InputContainer = styled.div<InputProps>`
-width: ${({ half }) => half ? '50%' : '100%'};
-position: relative;
-display: flex;
-flex-direction: column;
-margin-bottom: 20px;
+    width: ${({ half }) => half ? '50%' : '100%'};
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    @media (max-width: 400px) {
+        margin-bottom: 13px;
+    }
 `
 
 export const InputLabel = styled.label`
     font-size: 12px;
     color: ${({ theme }) => theme.colors.secondaryText};
     margin-bottom: 8px;
+    @media (max-width: 400px) {
+        font-size: 9px;
+        margin-bottom: 6px;
+    }
 `
 
 export const InputField = styled.input`
@@ -43,6 +50,11 @@ export const InputField = styled.input`
     color: ${({ theme }) => theme.colors.primaryText};
     &:focus{
         border: 0.5 solid red;
+    }
+    @media (max-width: 400px) {
+        font-size: 10px;
+        padding: 0px 8px;
+        height:30px;
     }
 `
 
@@ -67,6 +79,11 @@ export const InputTextArea = styled.textarea`
     &:focus{
         border: 0.5 solid red;
     }
+    @media (max-width: 400px) {
+        font-size: 10px;
+        padding: 7px 7px;
+        height:90px;
+    }
 `
 
 export const HorizontalFlex = styled.div`
@@ -86,6 +103,9 @@ export const CheckBoxFieldContainer = styled.div`
     &:hover{
         background-color: #635fc740;
     }
+    @media (max-width: 400px) {
+        padding: 9px 7px;
+    }
 `
 
 export const DeleteIcon = styled.img`
@@ -93,6 +113,10 @@ export const DeleteIcon = styled.img`
     width: 15px;
     margin-left: 15px;
     cursor: pointer;
+    @media (max-width: 400px) {
+        height: 11px;
+        width: 11px;
+    }
 `
 
 export const CheckBox = styled.div<CheckBoxProps>`
@@ -106,12 +130,21 @@ export const CheckBox = styled.div<CheckBoxProps>`
     margin-right: 20px;
     border: 1px solid #635fc7;
     cursor: pointer;
+    @media (max-width: 400px) {
+        height: 11px;
+        width: 11px;
+        border-radius: 2.5px;
+        margin-right: 10px;
+    }
 `
 
 
 export const CheckBoxLabel = styled.label`
     font-size: 12px;
     color: ${({ theme }) => theme.colors.primaryText};
+    @media (max-width: 400px) {
+        font-size: 8.5px;
+    }
 `
 
 export const SuggestionInputWrapper = styled.div`
@@ -149,6 +182,9 @@ export const SuggestionContainer = styled.div<SuggestionContainerProps>`
         background-color: #e0e0e0;
         border-radius: 10px;
     }
+    @media (max-width: 400px) {
+        top: 30px;
+    }
 `
 
 
@@ -165,6 +201,9 @@ export const SuggestionItem = styled.div<SuggestedItemProps>`
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
+    @media (max-width: 400px) {
+        padding: 8px 8px;
+    }
 `
 
 export const SuggestionText = styled.div`
@@ -174,6 +213,9 @@ export const SuggestionText = styled.div`
 export const SuggestionTitle = styled.div`
     font-size: 14px;
     margin-bottom: 5px;
+    @media (max-width: 400px) {
+        font-size: 10px;
+    }
 `
 
 export const SuggestionSubtitle = styled.div`
@@ -182,8 +224,14 @@ export const SuggestionSubtitle = styled.div`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; 
+    @media (max-width: 400px) {
+        font-size: 8px;
+    }
 `
 
 export const SuggestionState = styled.div`
     font-size:12px;
+    @media (max-width: 400px) {
+        font-size: 8.5px;
+    }
 `

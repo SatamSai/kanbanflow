@@ -62,6 +62,7 @@ export const PanelWrapper = styled.div`
     width: calc(100% - 270px);
     background-color: ${({ theme }) => theme.colors.secondaryBg};
     transition: width 0.3s ease;
+    overflow: hidden;
     &.show{
         width: 100%;
     }
@@ -86,11 +87,16 @@ export const PanelOption = styled.div<PanelOption>`
     justify-content: center;
     cursor: pointer;
     color: ${({ theme }) => theme.colors.primaryText};
+    @media (max-width: 400px) {
+        height:35px;
+        width: 110px;
+        font-size: 12px;
+    }
 `
 
 export const PanelBody = styled.div`
-height: calc(100% - 55px);
-width: 100%;
+    height: calc(100% - 55px);
+    width: 100%;
 `
 
 export const Sections = styled.div`

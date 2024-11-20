@@ -15,11 +15,15 @@ export const ModalWrapper = styled.div`
 `
 
 export const ModalContainer = styled.div`
-    width: 480px;
+    max-width: 480px;
+    width: 95%;
     box-sizing: border-box;
     background-color: ${({ theme }) => theme.colors.primaryBg};
     padding: 32px;
     border-radius: 6px;
+    @media (max-width: 400px) {
+        padding: 24px;
+    }
 `
 
 export const ModalTitle = styled.div`
@@ -29,6 +33,10 @@ export const ModalTitle = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @media (max-width: 400px) {
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
 `
 
 export const ModalTitleText = styled.div``

@@ -22,6 +22,9 @@ export const Options = styled.div`
 
 export const OptionImg = styled.img`
     height: 18px;
-    margin-left: 20px;
+    margin-left: 15px;
     cursor: pointer;
+    @media (max-width: 400px) {
+        height: 14px;
+    }
 `
