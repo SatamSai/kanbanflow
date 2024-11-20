@@ -9,7 +9,7 @@ export const ContentWrapper = styled.div`
     padding-top:80px;
     box-sizing: border-box;
     display: flex;
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
         padding-top:60px;
     }
 `
@@ -24,7 +24,7 @@ export const OptionImg = styled.img`
     height: 18px;
     margin-left: 15px;
     cursor: pointer;
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
         height: 14px;
     }
 `

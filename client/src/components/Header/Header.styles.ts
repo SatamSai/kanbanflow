@@ -12,7 +12,7 @@ export const HeaderContainer = styled.div`
     padding: 0px 25px;
     color: ${({ theme }) => theme.colors.primaryText};
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px; 
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
         height: 60px;
         padding: 0px 15px;
     }
@@ -27,7 +27,7 @@ export const LogoContainer = styled.div`
     display: flex;
     align-items: center;
     margin-right: 100px;
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
         margin-right: 50px;
     }
 `
@@ -35,7 +35,7 @@ export const LogoContainer = styled.div`
 export const LogoImg = styled.img`
     height: 25px;
     width: 25px;
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
         height: 20px;
         width: 20px;
     }
@@ -43,7 +43,7 @@ export const LogoImg = styled.img`
 export const LogoText = styled.div`
     font-size: 32px;
     margin-left: 15px;
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
         font-size: 25px;
         margin-left: 10px;
     }
@@ -51,7 +51,7 @@ export const LogoText = styled.div`
 export const Title = styled.h3`
     font-size: 21px;
     margin-right: 30px;
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
         font-size: 16px;
         margin-right: 10px;
     }

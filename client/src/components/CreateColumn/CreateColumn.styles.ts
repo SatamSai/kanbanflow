@@ -15,7 +15,7 @@ export const CreateColumnContainer = styled.div`
     &:hover{
         color:#635fc7 ;
     }
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
         font-size: 13px;
         width: 200px;
     }

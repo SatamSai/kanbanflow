@@ -16,7 +16,7 @@ export const SideBarContainer = styled.div`
     &.show{
         margin-left: 0px;
     }
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
         padding-top: 3px;
     }
 `
@@ -28,7 +28,7 @@ export const SideBarBottomContainer = styled.div`
     width: 100%;
     padding: 30px 0px;
     box-sizing: border-box;
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
         padding: 25px 0px;
     }
 `
@@ -60,7 +60,7 @@ margin-top: 20px;
         margin-left: 0px;
         justify-content: center;
     }
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
         font-size: 13px;
         height:45px;
     }
@@ -70,7 +70,7 @@ export const HideImg = styled.img`
     margin: 0px 10px;
     margin-top:2px;
     height: 30px;
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
         height: 22px;
     }
 `

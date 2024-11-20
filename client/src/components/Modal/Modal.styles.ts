@@ -16,12 +16,12 @@ export const ModalWrapper = styled.div`
 
 export const ModalContainer = styled.div`
     max-width: 480px;
-    width: 95%;
+    width: 90%;
     box-sizing: border-box;
     background-color: ${({ theme }) => theme.colors.primaryBg};
     padding: 32px;
     border-radius: 6px;
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
         padding: 24px;
     }
 `
@@ -33,7 +33,7 @@ export const ModalTitle = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
         margin-bottom: 20px;
         font-size: 14px;
     }

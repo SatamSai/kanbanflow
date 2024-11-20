@@ -245,7 +245,7 @@ const dropdownStyles: Partial<IDropdownStyles> = {
         fontSize: '13px',
         height: '40px',
         marginBottom: '5px',
-        '@media (max-width: 400px)': {
+        '@media (max-width: 500px)': {
             fontSize: '10px',
             height: '30px',
         },
@@ -253,7 +253,7 @@ const dropdownStyles: Partial<IDropdownStyles> = {
     dropdownItem: {
         fontSize: '13px',
         lineHeight: '40px',
-        '@media (max-width: 400px)': {
+        '@media (max-width: 500px)': {
             fontSize: '10px',
             lineHeight: '30px',
         },
@@ -261,7 +261,7 @@ const dropdownStyles: Partial<IDropdownStyles> = {
     dropdownItemSelected: {
         fontSize: '13px',
         lineHeight: '40px',
-        '@media (max-width: 400px)': {
+        '@media (max-width: 500px)': {
             fontSize: '12px',
             lineHeight: '30px',
         },
@@ -271,7 +271,7 @@ const dropdownStyles: Partial<IDropdownStyles> = {
         fontSize: '13px',
         height: '40px',
         lineHeight: '40px',
-        '@media (max-width: 400px)': {
+        '@media (max-width: 500px)': {
             fontSize: '10px',
             height: '30px',
             lineHeight: '30px',
@@ -280,7 +280,7 @@ const dropdownStyles: Partial<IDropdownStyles> = {
     caretDownWrapper: {
         height: '40px',
         lineHeight: '40px',
-        '@media (max-width: 400px)': {
+        '@media (max-width: 500px)': {
             height: '35px',
             lineHeight: '30px',
         },

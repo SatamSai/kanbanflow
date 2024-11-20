@@ -7,7 +7,7 @@ export const CardContainer = styled.div`
     box-shadow: rgba(100, 100, 111, 0.15) 0px 7px 29px 0px;
     border-radius: 5px;
     cursor: pointer;
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
         padding: 18px 13px;
         margin-top: 15px;
     }
@@ -16,7 +16,7 @@ export const CardHeader = styled.h1`
     font-size: 15px;
     margin-bottom: 15px;
     color: ${({ theme }) => theme.colors.primaryText};
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
         font-size: 10px;
         margin-bottom: 10px;
     }
@@ -25,7 +25,7 @@ export const CardHeader = styled.h1`
 export const CardContent = styled.div`
     font-size: 12px;
     color: ${({ theme }) => theme.colors.secondaryText};
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
         font-size: 9px;
     }
 `

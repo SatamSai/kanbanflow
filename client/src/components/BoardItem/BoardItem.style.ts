@@ -18,7 +18,7 @@ export const BoardItemContainer = styled.li<BoardItemProps>`
         background-color: #635fc722;
         color: #635fc7;
     }
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
         font-size: 11px;
         padding: 12px 12px;
     }
@@ -27,7 +27,7 @@ export const BoardItemContainer = styled.li<BoardItemProps>`
 export const BoardItemImg = styled.img`
     margin: 0px 3px;
     margin-top:2px;
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
         margin: 0px;
     }
 `

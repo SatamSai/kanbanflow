@@ -19,15 +19,22 @@ export const FormContainer = styled.div`
     align-items: center;
     flex-direction: column;
     padding: 20px;
-    max-width: 400px;
-    width: 95%;
+    max-width: 450px;
+    width: 90%;
+    box-sizing: border-box;
     background-color: ${({ theme }) => theme.colors.primaryBg};
+    @media (max-width: 450px) {
+        padding: 13px;
+    }
 `
 
 export const Logo = styled.div`
     color: ${({ theme }) => theme.colors.primaryText};
     font-size: 60px;
     margin-bottom: 25px;
+    @media (max-width: 450px) {
+        font-size: 30px;
+    }
 `
 
 export const Title = styled.div`
@@ -35,11 +42,17 @@ export const Title = styled.div`
     font-size: 25px;
     color: ${({ theme }) => theme.colors.primaryText};
     box-sizing: border-box;
+    @media (max-width: 450px) {
+        font-size: 18px;
+    }
 `
 export const Form = styled.form`
     padding: 20px;
     box-sizing: border-box;
     width: 100%;
+    @media (max-width: 450px) {
+        padding: 10px;
+    }
 `
 
 
@@ -47,6 +60,10 @@ export const Option = styled.div`
     font-size: 13px;
     margin-bottom: 20px;
     color: ${({ theme }) => theme.colors.primaryText};
+    @media (max-width: 450px) {
+        margin-top: 5px;
+        font-size: 9px;
+    }
 `
 export const OptionLink = styled.a`
     margin-left: 5px;
@@ -87,7 +104,7 @@ export const PanelOption = styled.div<PanelOption>`
     justify-content: center;
     cursor: pointer;
     color: ${({ theme }) => theme.colors.primaryText};
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
         height:35px;
         width: 110px;
         font-size: 12px;
