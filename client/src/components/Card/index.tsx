@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { DragEvent } from 'react'
 import { CardContainer, CardContent, CardHeader } from './Card.styles'
 import { Task } from '../../types'
 import { useModal } from '../../context/modalContext'
@@ -11,7 +11,7 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({ task }) => {
     const { setModalKey, setModalTitle, toggleShowModal } = useModal()
 
-    const { setTaskInfo } = useTask()
+    const { setTaskInfo, setDraggedTask } = useTask()
 
     const handleShowTaskInfo = () => {
         setModalKey("taskInfo")
@@ -19,8 +19,14 @@ const Card: React.FC<CardProps> = ({ task }) => {
         toggleShowModal()
         setTaskInfo(task)
     }
+
+    const handleDragStart = (e: DragEvent<HTMLDivElement>) => {
+        e.stopPropagation()
+        setDraggedTask(task)
+    }
+
     return (
-        <CardContainer onClick={handleShowTaskInfo}>
+        <CardContainer onClick={handleShowTaskInfo} draggable onDragStart={(e) => handleDragStart(e)}>
             <CardHeader>{task.title}</CardHeader>
             <CardContent>0 of 1 subtask</CardContent>
         </CardContainer>

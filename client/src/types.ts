@@ -65,6 +65,9 @@ export type TaskReducerAction = {
 } | {
     type: "SET_EDITABLE_TASK",
     payload: Task | undefined
+} | {
+    type: "SET_DRAGGED_TASKID",
+    payload: Task
 }
 
 export interface BoardContextState {

@@ -10,17 +10,21 @@ interface TaskProviderProps {
 export interface TaskContextState {
     editableTaskInfo: Task | undefined;
     currentTask: Task | undefined;
+    draggedTask?: Task;
     setEditableTaskInfo: (_task?: Task) => void;
     setTaskInfo: (_task?: Task) => void;
-    setCurrentTaskSubTasks: (_subTasks: Task[]) => void
+    setCurrentTaskSubTasks: (_subTasks: Task[]) => void;
+    setDraggedTask: (_task: Task) => void
 }
 
 const defaultState: TaskContextState = {
     editableTaskInfo: undefined,
     currentTask: undefined,
+    draggedTask: undefined,
     setEditableTaskInfo: (_task?: Task) => { },
     setTaskInfo: (_task?: Task) => { },
-    setCurrentTaskSubTasks: (_subTasks: Task[]) => { }
+    setCurrentTaskSubTasks: (_subTasks: Task[]) => { },
+    setDraggedTask: (_task: Task) => { }
 }
 
 
@@ -51,11 +55,19 @@ export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
         })
     }
 
+    const setDraggedTask = (_task: Task) => {
+        dispatch({
+            type: "SET_DRAGGED_TASKID",
+            payload: _task
+        })
+    }
+
     const value: TaskContextState = {
         ...state,
         setTaskInfo,
         setEditableTaskInfo,
-        setCurrentTaskSubTasks
+        setCurrentTaskSubTasks,
+        setDraggedTask
     }
 
     return <TaskContext.Provider value={value}>

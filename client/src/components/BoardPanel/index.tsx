@@ -4,6 +4,7 @@ import CreateColumn from '../CreateColumn'
 import { useBoard } from '../../context/boardContext'
 import CustomButton from '../CustomButton'
 import { useModal } from '../../context/modalContext'
+import { useState } from 'react'
 
 const BoardPanel = () => {
 
@@ -15,6 +16,7 @@ const BoardPanel = () => {
         setModalTitle("Add New Task")
         toggleShowModal()
     }
+
     return (
         <BoardContainer>
             <BoardWrapper>

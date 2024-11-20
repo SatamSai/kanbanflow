@@ -15,7 +15,7 @@ export const BoardWrapper = styled.div`
     overflow: auto;
     /* Custom Scrollbar */
     &::-webkit-scrollbar {
-        width: 2px;
+        height: 7px;
     }
 
     &::-webkit-scrollbar-thumb {

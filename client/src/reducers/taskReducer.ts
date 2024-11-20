@@ -23,5 +23,13 @@ export const taskReducer = (state: TaskContextState, action: TaskReducerAction):
                 ...state,
                 editableTaskInfo: action.payload
             }
+        case 'SET_DRAGGED_TASKID':
+            return {
+                ...state,
+                draggedTask: action.payload
+            }
+
+        default:
+            return state
     }
 }

@@ -13,18 +13,23 @@ export const BoardWrapper = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 40px;
+    padding: 30px;
     box-sizing: border-box;
+
+    @media (max-width: 450px) {
+        padding: 10px;
+    }
 `
 
 export const MembersList = styled.div`
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-wrap: wrap;
     overflow-y:auto;
     width: 100%;
+    gap: 5%;
     margin-bottom: 30px;
-    height: calc(100% - 85px);
-    /* Custom Scrollbar */
+   max-height: calc(100% - 85px);
+   
     &::-webkit-scrollbar {
         width: 12px;
     }
@@ -56,27 +61,41 @@ export const MemberCard = styled.div`
     background-color: ${({ theme }) => theme.colors.primaryBg};
     border-radius: 10px;
     height: 75px;
+    width: 45%;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 20px;
     box-sizing: border-box;
     cursor: pointer;
-    margin:15px;
+    margin:15px 0px;
+    @media (max-width: 450px) {
+        padding: 10px;
+        height: 55px;
+    }
 `
 
 export const MemberInfo = styled.div``
 
 export const MemberRole = styled.div`
-font-size:13px;
-text-transform: uppercase;
+    font-size:13px;
+    text-transform: uppercase;
+    @media (max-width: 450px) {
+        font-size:9px;
+    }
 `
 
 export const MemberName = styled.div`
     font-size: 18px;
     margin-bottom: 5px;
+    @media (max-width: 450px) {
+        font-size:13px;
+    }
 `
 export const MemberEmail = styled.div`
     color: ${({ theme }) => theme.colors.secondaryText};
     font-size: 11px;
+    @media (max-width: 450px) {
+        font-size:8px;
+    }
 `
