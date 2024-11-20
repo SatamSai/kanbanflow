@@ -5,8 +5,8 @@ interface PanelOption {
 }
 
 export const Wrapper = styled.div`
-    height: 100vh;
-    width: 100vw;
+    height: 100dvh;
+    width: 100dvw;
     background-color: ${({ theme }) => theme.colors.secondaryBg};
     display: flex;
     justify-content: center;
