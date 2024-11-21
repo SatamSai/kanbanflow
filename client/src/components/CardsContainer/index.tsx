@@ -1,4 +1,4 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Container } from './CardsContainer.styles'
 import Card from '../Card'
 import { useBoard } from '../../context/boardContext'

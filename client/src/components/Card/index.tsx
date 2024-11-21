@@ -1,4 +1,4 @@
-import React, { DragEvent } from 'react'
+import React, { DragEvent, TouchEvent } from 'react'
 import { CardContainer, CardContent, CardHeader } from './Card.styles'
 import { Task } from '../../types'
 import { useModal } from '../../context/modalContext'
@@ -25,8 +25,14 @@ const Card: React.FC<CardProps> = ({ task }) => {
         setDraggedTask(task)
     }
 
+
+    const handleTouchStart = (e: TouchEvent<HTMLDivElement>) => {
+        e.stopPropagation()
+        setDraggedTask(task)
+    }
+
     return (
-        <CardContainer onClick={handleShowTaskInfo} draggable onDragStart={(e) => handleDragStart(e)}>
+        <CardContainer onClick={handleShowTaskInfo} draggable onDragStart={(e) => handleDragStart(e)} onTouchStart={(e) => handleTouchStart(e)}>
             <CardHeader>{task.title}</CardHeader>
             <CardContent>0 of 1 subtask</CardContent>
         </CardContainer>

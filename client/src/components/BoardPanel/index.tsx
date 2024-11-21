@@ -4,7 +4,6 @@ import CreateColumn from '../CreateColumn'
 import { useBoard } from '../../context/boardContext'
 import CustomButton from '../CustomButton'
 import { useModal } from '../../context/modalContext'
-import { useState } from 'react'
 
 const BoardPanel = () => {
 
