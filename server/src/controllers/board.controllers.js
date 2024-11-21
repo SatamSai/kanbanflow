@@ -169,10 +169,10 @@ const handleAddMemberToBoard = async (req, res) => {
 const handleGenerateInvite = async (req, res) => {
     const generatedBy = req.user._id
     const body = req.body
+    const params = req.params
 
     const missingFields = [];
 
-    if (!body.boardId) missingFields.push("boardId");
     if (!body.role) missingFields.push("role");
 
     if (missingFields.length > 0) {
@@ -187,7 +187,7 @@ const handleGenerateInvite = async (req, res) => {
     const token = nanoid()
 
     const inviteDetails = {
-        board: body.boardId,
+        board: params.boardId,
         expiresAt: expiryDate,
         token: token,
         generatedBy: generatedBy,

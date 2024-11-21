@@ -2,8 +2,8 @@ import BaseApiService from "./baseApiService";
 
 class InviteServices extends BaseApiService {
 
-    generateInvite = (data: Object) => {
-        return this.makeAPICall('/board/generateInvite', 'POST', data)
+    generateInvite = (boardId: string, data: Object) => {
+        return this.makeAPICall(`/board/generateInvite/${boardId}`, 'POST', data)
     }
 
     getInviteInfo = (token: string) => {

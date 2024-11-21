@@ -40,6 +40,7 @@ const roleBasedAccessControl = (_allowedRoles) => {
     return async (req, res, next) => {
 
         const board = req.board
+
         const boardMember = board.members.find(member => member.user.equals(req.user._id))
 
         if (!boardMember) {

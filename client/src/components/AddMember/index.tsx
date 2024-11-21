@@ -24,10 +24,9 @@ const AddMember = () => {
         }
         if (currentBoard) {
             const body = {
-                boardId: currentBoard._id,
                 role: role
             }
-            const inviteRes = await inviteService.generateInvite(body)
+            const inviteRes = await inviteService.generateInvite(currentBoard._id, body)
 
             const invitation = inviteRes.data
 

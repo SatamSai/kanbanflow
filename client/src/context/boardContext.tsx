@@ -72,9 +72,10 @@ export const BoardProvider: React.FC<BoardProviderProps> = ({ children }) => {
     }
 
     const updateCurrentBoardAllTasks = async (_selectedBoard: string) => {
-
         const tasksRes = await baordService.getBoardTasks(_selectedBoard)
         const tasks: Task[] = tasksRes.data
+        tasks.sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
+
         dispatch({
             type: "SET_BOARD_TASKS",
             payload: tasks

@@ -3,7 +3,6 @@ const { Task } = require("../models/task.model")
 
 const loadPreReqtData = async (req, res, next) => {
     const { taskId, boardId } = req.params
-
     let board
 
     try {

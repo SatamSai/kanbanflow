@@ -31,6 +31,7 @@ export interface Task {
     createdBy?: User,
     subTasks?: Task[],
     priority: string,
+    updatedAt: Date,
     status: string
 }
 

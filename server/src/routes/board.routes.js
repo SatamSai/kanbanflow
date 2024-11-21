@@ -13,7 +13,7 @@ router.route('/:boardId')
     .patch(verifyToken, roleBasedAccessControl(["owner", "admin"]), handleUpdateBoardById)
     .delete(verifyToken, loadPreReqtData, roleBasedAccessControl(["owner"]), handleDeleteBoardById)
 
-router.route('/generateInvite')
+router.route('/generateInvite/:boardId')
     .post(verifyToken, loadPreReqtData, roleBasedAccessControl(["owner", "admin"]), handleGenerateInvite)
 
 router.route('/:inviteToken/getInviteInfo')

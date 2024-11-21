@@ -14,6 +14,7 @@ const defaultInput: Task = {
     description: "",
     isDone: false,
     subTasks: [],
+    updatedAt: new Date(),
     priority: "Very Low",
     status: "Unassigned"
 }
@@ -116,7 +117,7 @@ const CreateTask = () => {
                 description: task.description,
                 status: task.status,
                 priority: task.priority,
-                subTasks: task.subTasks.map(subTask => subTask._id)
+                subTasks: task.subTasks.map(subTask => subTask._id),
             }
             await taskService.updateTask(task._id, body)
             setTimeout(() => {
