@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { CheckBoxGroup, CustomDropdown, UserAssignment } from '../Input'
 import { TaskDesc } from './TaskInfo.styles'
 import { useBoard } from '../../context/boardContext'
