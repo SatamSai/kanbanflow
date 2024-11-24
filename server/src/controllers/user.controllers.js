@@ -1,4 +1,7 @@
 const { User } = require('../models/user.model')
+const { OAuth2Client } = require('google-auth-library')
+
+const client = new OAuth2Client(process.env.CLIENT_ID)
 
 const handleGetAllUsers = async (req, res) => {
     const users = await User.find({}).select('-password -boards -createdAt -updatedAt')
@@ -107,6 +110,74 @@ const handleLoginUser = async (req, res) => {
     }
 }
 
+const handleGoogleLogin = async (req, res) => {
+    const { accessToken: token } = req.body
+
+    if (!token) {
+        return res.status(403).json({
+            message: "Provide Google access token"
+        })
+    }
+
+    try {
+        const response = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+            },
+        });
+
+        if (!response.ok) {
+            throw new Error("Failed to verify Google token")
+        }
+
+        const userInfo = await response.json()
+
+        const { email } = userInfo
+        let user = await User.findOne({ email });
+
+        if (!user) {
+            user = await User.create({
+                username: email.split('@')[0],
+                email: email
+            });
+        }
+
+        const accessToken = await user.generateAccessToken();
+
+        const options = {
+            httpOnly: true,
+            secure: true,
+            sameSite: 'None',
+            path: '/',
+        };
+
+        return res
+            .status(200)
+            .cookie('accessToken', accessToken, options)
+            .json({ user, message: 'Login Successful' });
+    } catch (error) {
+        console.error('Error verifying Google token:', error.message);
+        return res.status(400).json({ message: 'Invalid Google token' });
+    }
+
+}
+
+const handleLogoutUser = async (req, res) => {
+
+    const options = {
+        httpOnly: true,
+        secure: true
+    }
+
+    return res.status(200)
+        .clearCookie("accessToken", options)
+        .clearCookie("refreshToken", options)
+        .json({
+            message: "User Loggedout Successfully"
+        })
+}
+
 const handleGetUserById = async (req, res) => {
     const userId = req.params._id
 
@@ -188,5 +259,7 @@ module.exports = {
     handleUpdateUser,
     handleDeleteUser,
     handleLoginUser,
+    handleGoogleLogin,
+    handleLogoutUser,
     handleGetUserByToken
 }

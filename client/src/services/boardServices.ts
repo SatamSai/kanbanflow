@@ -7,6 +7,10 @@ class BoardServices extends BaseApiService {
         return this.makeAPICall(`/board/${boardId}`, 'GET')
     }
 
+    updateBoard = (boardId: string, data: Object) => {
+        return this.makeAPICall(`/board/${boardId}`, 'PATCH', data)
+    }
+
     getAllBoards = () => {
         return this.makeAPICall('/board', 'GET')
     }

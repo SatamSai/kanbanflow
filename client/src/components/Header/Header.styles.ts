@@ -21,6 +21,7 @@ export const HeaderContainer = styled.div`
 export const HeadingContainer = styled.div`
     display: flex;
     align-items: center;
+    width: 100%;
 `
 
 export const LogoContainer = styled.div`
@@ -85,3 +86,12 @@ export const Options = styled.ul`
     display: none;
 `
 export const Option = styled.li``
+
+export const LogoutText = styled.div`
+    font-style: italic;
+    font-weight: 400;
+    flex:1;
+    display: flex;
+    justify-content: end;
+    cursor: pointer;
+`

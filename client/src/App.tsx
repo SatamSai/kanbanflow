@@ -9,6 +9,11 @@ import Login from './pages/login'
 import { UserProvider } from './context/userContext'
 import Fullname from './pages/fullname'
 import InviteHandler from './components/InviteHandler'
+import { GoogleOAuthProvider } from '@react-oauth/google'
+
+
+const GOOGLE_AUTH_CLIENT_ID = import.meta.env.VITE_GOOGLE_AUTH_CLIENT_ID
+
 function App() {
 
   const router = createBrowserRouter([
@@ -39,7 +44,9 @@ function App() {
       <TaskProvider>
         <ModalProvider>
           <BoardProvider>
-            <RouterProvider router={router} />
+            <GoogleOAuthProvider clientId={GOOGLE_AUTH_CLIENT_ID}>
+              <RouterProvider router={router} />
+            </GoogleOAuthProvider>
           </BoardProvider>
         </ModalProvider>
       </TaskProvider>

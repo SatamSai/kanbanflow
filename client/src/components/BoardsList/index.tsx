@@ -5,15 +5,20 @@ import BoardItem from '../BoardItem'
 import { useBoard } from '../../context/boardContext'
 import { useModal } from '../../context/modalContext'
 import baordService from '../../services/boardServices'
+import { Board } from '../../types'
+import { useUser } from '../../context/userContext'
+import { ROLE_LEVEL_MAP } from '../../constants'
 
 
 const BoardsList = () => {
 
     const [selectedBoard, setSelectedBoard] = useState<string | null>(null)
 
-    const { setCurrentBoard, setUserAllBoards, usersAllBoards } = useBoard()
+    const { setCurrentBoard, setUserAllBoards, usersAllBoards, setCurrentBoardPermissionLevel } = useBoard()
 
     const { setModalKey, toggleShowModal, setModalTitle } = useModal()
+
+    const { userInfo } = useUser()
 
     const handleCreateBoard = () => {
         setModalKey("createBoard")
@@ -34,7 +39,7 @@ const BoardsList = () => {
         const fetchBoard = async () => {
             if (selectedBoard) {
                 const boardRes = await baordService.getBoardById(selectedBoard)
-                const board = boardRes.data
+                const board = boardRes.data as Board
                 setCurrentBoard({
                     _id: board._id,
                     title: board.title,
@@ -43,6 +48,12 @@ const BoardsList = () => {
                     columns: board.columns
                 })
 
+                const currentMember = board.members?.find(member => member.user._id == userInfo?._id)
+
+                if (currentMember) {
+                    const role = currentMember.role as keyof typeof ROLE_LEVEL_MAP
+                    setCurrentBoardPermissionLevel(ROLE_LEVEL_MAP[role])
+                }
             }
         }
         fetchBoard()

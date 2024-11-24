@@ -4,13 +4,16 @@ import CustomButton from '../CustomButton'
 import { useModal } from '../../context/modalContext'
 import { Member } from '../../types'
 import { useUser } from '../../context/userContext'
+import { useEffect, useState } from 'react'
 
 const MembersPanel = () => {
     const { currentBoard } = useBoard()
 
     const { toggleShowModal, setModalKey, setModalTitle } = useModal()
 
-    const { setSelectedUserInfo } = useUser()
+    const { setSelectedUserInfo, userInfo } = useUser()
+
+    const [canAddMember, setCanAddMember] = useState<boolean>(false)
 
     const handleAddMemberClick = () => {
         setModalKey("addMember")
@@ -25,6 +28,17 @@ const MembersPanel = () => {
         setSelectedUserInfo(_member)
 
     }
+
+    useEffect(() => {
+        if (userInfo && currentBoard?.members) {
+            const currentMember = currentBoard.members?.find(member => member.user._id == userInfo._id)
+            if (currentMember) {
+                setCanAddMember(currentMember.role == "owner" || currentMember.role == "admin")
+            }
+        }
+    })
+
+
     return (
         <BoardContainer>
             <BoardWrapper>
@@ -48,7 +62,10 @@ const MembersPanel = () => {
                             }
                         </MembersList> : <NoMembersText>No Members</NoMembersText>
                 }
-                <CustomButton onClick={handleAddMemberClick} text='Add Member' />
+                {
+                    canAddMember &&
+                    <CustomButton onClick={handleAddMemberClick} text='Add Member' />
+                }
             </BoardWrapper>
         </BoardContainer>
     )

@@ -18,13 +18,13 @@ export const FormContainer = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 20px;
     max-width: 450px;
     width: 90%;
     box-sizing: border-box;
     background-color: ${({ theme }) => theme.colors.primaryBg};
+    padding: 20px 40px;
     @media (max-width: 450px) {
-        padding: 13px;
+        padding: 23px;
     }
 `
 
@@ -47,11 +47,11 @@ export const Title = styled.div`
     }
 `
 export const Form = styled.form`
-    padding: 20px;
     box-sizing: border-box;
     width: 100%;
+    padding: 20px 0px;
     @media (max-width: 450px) {
-        padding: 10px;
+        padding: 10px 0px;
     }
 `
 
@@ -120,4 +120,32 @@ export const Sections = styled.div`
 display: flex;
 justify-content: space-between;
 align-items: center;
+`
+
+export const GoogleLogo = styled.img`
+    height: 30px;
+    margin-top: 1px;
+`
+
+export const GoogleLoginButton = styled.button`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 40px;
+    font-size: 13px;
+    border-radius: 100px;
+    border: 0px;
+    cursor: pointer;
+    font-weight: 700;
+    background-color: white;
+    color:${({ theme }) => theme.colors.primary};
+    margin: 0px 20px;
+    gap: 10px;
+    margin-top: -10px;
+    margin-bottom: 20px;
+    @media (max-width: 450px) {
+        height: 30px;
+        font-size: 9.5px;
+    }
 `

@@ -14,6 +14,9 @@ const defaultInput: Task = {
     description: "",
     isDone: false,
     subTasks: [],
+    assignedTo: {
+        fullname: "",
+    },
     updatedAt: new Date(),
     priority: "Very Low",
     status: "Unassigned"

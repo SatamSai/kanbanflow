@@ -19,6 +19,14 @@ class UserServices extends BaseApiService {
         return this.makeAPICall(`/users/login`, 'POST', data)
     }
 
+    googleLogin = (data: Object) => {
+        return this.makeAPICall(`/users/google-login`, 'POST', data)
+    }
+
+    logoutUser = () => {
+        return this.makeAPICall(`/users/logout`, 'POST')
+    }
+
 }
 
 

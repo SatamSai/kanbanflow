@@ -17,11 +17,13 @@ export const initialState: BoardContextState = {
         tasks: [],
         members: []
     },
+    permissionLevel: -1,
     updateCurrentBoardAllTasks: (_selectedBoard: string) => { },
     setBoardInviteInfo: (_invite?: Invite) => { },
     fetchMembers: (_selectedBoard: string) => { },
     setUserAllBoards: () => { },
     setCurrentBoard: (_board?: Board) => { },
+    setCurrentBoardPermissionLevel: (_level: number) => { },
     setEditableBoard: (_board?: Board) => { },
     updateTask: (_task: Task) => { },
     deleteTask: (_taskId) => { },
@@ -55,6 +57,13 @@ export const BoardProvider: React.FC<BoardProviderProps> = ({ children }) => {
         });
     };
 
+    const setCurrentBoardPermissionLevel = (_level: number) => {
+        dispatch({
+            type: 'SET_PERMISSION_LEVEL',
+            payload: _level
+        })
+    }
+
     const setEditableBoard = (_board?: Board) => {
         dispatch({
             type: "SET_EDITABLE_BOARD",
@@ -74,7 +83,6 @@ export const BoardProvider: React.FC<BoardProviderProps> = ({ children }) => {
     const updateCurrentBoardAllTasks = async (_selectedBoard: string) => {
         const tasksRes = await baordService.getBoardTasks(_selectedBoard)
         const tasks: Task[] = tasksRes.data
-        tasks.sort((a, b) => new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime());
 
         dispatch({
             type: "SET_BOARD_TASKS",
@@ -112,6 +120,7 @@ export const BoardProvider: React.FC<BoardProviderProps> = ({ children }) => {
         setUserAllBoards,
         setBoardInviteInfo,
         setCurrentBoard,
+        setCurrentBoardPermissionLevel,
         updateCurrentBoardAllTasks,
         updateTask,
         fetchMembers,

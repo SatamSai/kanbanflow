@@ -69,6 +69,7 @@ const CreateBoard = () => {
             columns: columns
         })
     }
+
     const handleCreateBoard = async () => {
         if (!board) return
 
@@ -81,6 +82,24 @@ const CreateBoard = () => {
         }
 
         await baordService.createBoard(body)
+        setTimeout(() => {
+            setUserAllBoards()
+            toggleShowModal()
+        }, 300)
+    }
+
+    const handleUpdateBoard = async () => {
+        if (!board) return
+
+        if (board.title == "" || board.description == "" || board.columns.filter(column => column == "").length > 0) return
+
+        const body = {
+            title: board.title,
+            description: board.description,
+            columns: board.columns
+        }
+
+        await baordService.updateBoard(board._id, body)
         setTimeout(() => {
             setUserAllBoards()
             toggleShowModal()
@@ -100,7 +119,7 @@ const CreateBoard = () => {
                     <Input label='Board Title' fieldVal={board?.title} handleSetVal={handleSetTitle} />
                     <TextArea label='Board Description' fieldVal={board.description} handleSetVal={handleSetDescription} />
                     <ColumnsFieldGroup label='Board Columns' fieldVal={board.columns} handleSetVal={handleSetColumnVal} handleAddNewItem={handleAddNewColumn} handleRemoveItem={handleRemoveColumn} />
-                    <CustomButton text='Create Board' onClick={handleCreateBoard} />
+                    <CustomButton text={editableBoard ? 'Update Board' : 'Create Board'} onClick={editableBoard ? handleUpdateBoard : handleCreateBoard} />
                 </>
             }
         </>

@@ -132,7 +132,10 @@ const handleAssignTask = async (req, res) => {
             {
                 new: true
             }
-        )
+        ).populate({
+            path: 'assignedTo',
+            select: 'fullname'
+        })
 
         return res.status(200).json(task)
     } catch (error) {

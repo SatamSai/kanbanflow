@@ -7,7 +7,7 @@ import CheckedIconUrl from '../../assets/check.svg'
 import ShowIconUrl from '../../assets/show.svg'
 import HideIconUrl from '../../assets/hide.svg'
 import { useBoard } from '../../context/boardContext';
-import { Task } from '../../types';
+import { Member, Task } from '../../types';
 import taskService from '../../services/taskServices';
 
 interface InputProps {
@@ -60,6 +60,13 @@ interface ChecBoxParams {
 interface CheckBoxGroupParams {
     items: Task[],
     handleToggleCheckItem: (_id: string, _isDone: boolean) => void
+}
+
+interface UserAssignmentProps {
+    searchTerm: string,
+    setSearchTerm: (val: string) => void,
+    selectUser: (_id: string) => void,
+    suggestions: Member[]
 }
 
 const Input: React.FC<InputProps> = ({ fieldVal, handleSetVal, label, fieldType = "text" }) => {
@@ -320,4 +327,37 @@ const CustomDropdown: React.FC<DropdownProps> = ({ fieldVal, handleSetVal, optio
         </InputContainer>
     );
 };
-export { Input, TextArea, SubTaskGroup, CustomDropdown, ColumnsFieldGroup, CheckBoxGroup }
+
+const UserAssignment: React.FC<UserAssignmentProps> = ({ searchTerm, setSearchTerm, selectUser, suggestions }) => {
+    return (
+        <InputContainer>
+            <InputLabel>Assignee: </InputLabel>
+            <HorizontalFlex>
+                <InputField value={searchTerm} onChange={e => setSearchTerm(e.target.value)} />
+            </HorizontalFlex>
+            <div style={{ position: 'relative', backgroundColor: 'red' }}>
+                {
+                    suggestions &&
+                    <SuggestionContainer selected={false} absolute userField={true}>
+                        {
+                            suggestions.map((suggestion) => {
+                                return (
+                                    <SuggestionItem selected={false} key={suggestion.user._id} onClick={() => {
+                                        setSearchTerm(suggestion.user.fullname)
+                                        selectUser(suggestion.user._id)
+                                    }}>
+                                        <SuggestionText>
+                                            <SuggestionTitle>{suggestion.user.fullname}</SuggestionTitle>
+                                        </SuggestionText>
+                                    </SuggestionItem>
+                                )
+                            })
+                        }
+                    </SuggestionContainer>
+                }
+            </div>
+        </InputContainer>
+    )
+
+}
+export { Input, TextArea, SubTaskGroup, CustomDropdown, ColumnsFieldGroup, CheckBoxGroup, UserAssignment }

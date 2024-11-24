@@ -9,7 +9,9 @@ const {
     handleGetUserByToken,
     handleSubmitInfo,
     handleUpdateUser,
-    handleDeleteUser
+    handleDeleteUser,
+    handleLogoutUser,
+    handleGoogleLogin
 } = require('../controllers/user.controllers');
 const { verifyToken } = require('../middleware/auth');
 
@@ -27,6 +29,12 @@ router.route('/register')
 
 router.route('/login')
     .post(handleLoginUser)
+
+router.route('/google-login')
+    .post(handleGoogleLogin)
+
+router.route('/logout')
+    .post(verifyToken, handleLogoutUser)
 
 router.route('/check-token')
     .get(verifyToken, handleGetUserByToken)

@@ -8,7 +8,7 @@ const memberSchema = new Schema({
     },
     role: {
         type: String,
-        enum: ["owner", "admin", "editor", "contributor", "viewer", "guest"],
+        enum: ["owner", "admin", "editor", "contributor", "viewer"],
         default: "viewer",
         required: true,
     }

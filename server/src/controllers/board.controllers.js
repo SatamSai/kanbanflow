@@ -181,6 +181,13 @@ const handleGenerateInvite = async (req, res) => {
         });
     }
 
+
+    if (body.role == 'owner') {
+        return res.status(403).json({
+            message: "cannot assign 'owner' role"
+        })
+    }
+
     const expiryDate = new Date();
     expiryDate.setHours(expiryDate.getHours() + 24);
 
@@ -281,6 +288,11 @@ const handleRemoveMember = async (req, res) => {
 
     try {
         const board = await Board.findById(boardId)
+        if (board.owner == memberId) {
+            return res.status(403).json({
+                message: 'Cannot remove owner of the Board!'
+            })
+        }
         board.members = board.members.filter(member => member.user != memberId)
         await board.save();
         return res.status(200).json(board)
@@ -320,7 +332,13 @@ const handleGetBoardTasks = async (req, res) => {
     const boardId = req.params.boardId
 
     try {
-        const board = await Board.findById(boardId).populate('tasks').exec()
+        const board = await Board.findById(boardId).populate({
+            path: 'tasks',
+            populate: {
+                path: 'assignedTo',
+                select: 'fullname'
+            }
+        }).exec()
         return res.status(200).json(board.tasks)
     } catch (error) {
         return res.status(500).json({

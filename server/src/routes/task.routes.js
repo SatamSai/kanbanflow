@@ -10,7 +10,7 @@ router.route('/board/:boardId/createTask')
     .post(
         verifyToken,
         loadPreReqtData,
-        roleBasedAccessControl(["owner"]),
+        roleBasedAccessControl(["owner", "admin", "editor"]),
         [titleValidation, descriptionValidation, priorityValidation, statusValidation, subTasksValidation],
         handleCreateTask
     )
@@ -19,20 +19,20 @@ router.route('/:taskId')
     .get(
         verifyToken,
         loadPreReqtData,
-        roleBasedAccessControl(["owner"]),
+        roleBasedAccessControl(["owner", "admin", "editor", "contributor", "viewer"]),
         handleGetTaskById
     )
     .patch(
         verifyToken,
         loadPreReqtData,
         [titleValidation, descriptionValidation, priorityValidation, statusValidation, subTasksValidation],
-        roleBasedAccessControl(["owner"]),
+        roleBasedAccessControl(["owner", "admin", "editor"]),
         handleUpdateTask
     )
     .delete(
         verifyToken,
         loadPreReqtData,
-        roleBasedAccessControl(["owner"]),
+        roleBasedAccessControl(["owner", "admin", "editor"]),
         handleDeleteTask
     )
 
@@ -41,7 +41,7 @@ router.route('/:taskId/assignTask')
         verifyToken,
         loadPreReqtData,
         [memberValidation],
-        roleBasedAccessControl(["owner"]),
+        roleBasedAccessControl(["owner", "admin", "editor", "contributor"]),
         handleAssignTask
     )
 
@@ -50,7 +50,7 @@ router.route('/:taskId/updatePriority')
         verifyToken,
         loadPreReqtData,
         [priorityValidation],
-        roleBasedAccessControl(["owner"]),
+        roleBasedAccessControl(["owner", "admin", "editor", "contributor"]),
         handleUpdatePriority
     )
 
@@ -59,7 +59,7 @@ router.route('/:taskId/updateStatus')
         verifyToken,
         loadPreReqtData,
         [statusValidation],
-        roleBasedAccessControl(["owner"]),
+        roleBasedAccessControl(["owner", "admin", "editor", "contributor"]),
         handleUpdateStatus
     )
 
@@ -68,7 +68,7 @@ router.route('/:taskId/updateIsDone')
         verifyToken,
         loadPreReqtData,
         [isDoneValidation],
-        roleBasedAccessControl(["owner"]),
+        roleBasedAccessControl(["owner", "admin", "editor", "contributor"]),
         handleUpdateIsDone
     )
 
@@ -76,7 +76,7 @@ router.route('/:taskId/getSubTasks')
     .get(
         verifyToken,
         loadPreReqtData,
-        roleBasedAccessControl(["owner"]),
+        roleBasedAccessControl(["owner", "admin", "editor", "contributor", "viewer"]),
         handleGetSubTasks
     )
 
@@ -84,7 +84,7 @@ router.route('/board/:boardId/')
     .get(
         verifyToken,
         loadPreReqtData,
-        roleBasedAccessControl(["owner"]),
+        roleBasedAccessControl(["owner", "admin", "editor", "contributor", "viewer"]),
         handleGetTaskBySearchTerm
     )
 

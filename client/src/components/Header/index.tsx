@@ -1,12 +1,20 @@
 import React from 'react'
-import { HeaderContainer, HeadingContainer, LogoContainer, LogoImg, LogoText, Title } from './Header.styles'
+import { HeaderContainer, HeadingContainer, LogoContainer, LogoImg, LogoText, LogoutText, Title } from './Header.styles'
 import LogoImgUrl from '../../assets/logo.svg'
 import { useBoard } from '../../context/boardContext'
+import userService from '../../services/userServices'
+import { useNavigate } from 'react-router-dom'
 
 const Header: React.FC = () => {
 
     const { currentBoard } = useBoard()
 
+    const navigate = useNavigate()
+
+    const handleLogout = async () => {
+        await userService.logoutUser()
+        navigate('/login')
+    }
 
     return (
         <HeaderContainer>
@@ -16,6 +24,7 @@ const Header: React.FC = () => {
                     <LogoText>kanban</LogoText>
                 </LogoContainer>
                 <Title>{currentBoard?.title || ""}</Title>
+                <LogoutText onClick={handleLogout}>Logout</LogoutText>
             </HeadingContainer>
         </HeaderContainer>
     )

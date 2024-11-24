@@ -11,6 +11,7 @@ interface CheckBoxProps {
 interface SuggestionContainerProps {
     absolute: boolean
     selected: boolean
+    userField?: boolean
 }
 
 interface SuggestedItemProps {
@@ -160,7 +161,7 @@ export const SuggestionContainer = styled.div<SuggestionContainerProps>`
     display: flex;
     flex-direction: ${props => props.selected ? 'row' : 'column'};
     align-items:center;
-    top: 42px;
+    top: ${props => props.userField ? '-8px' : '42px'};
     max-height: 170px;
     overflow-y: auto;
     width: 100%;
@@ -169,7 +170,6 @@ export const SuggestionContainer = styled.div<SuggestionContainerProps>`
     border-radius: 4px;
     margin-bottom: ${props => props.selected ? '10px' : '0px'};
 
-    /* Custom Scrollbar */
     &::-webkit-scrollbar {
         width: 8px;
     }

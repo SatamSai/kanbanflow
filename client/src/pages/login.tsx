@@ -1,11 +1,13 @@
 import { MouseEvent, useState } from 'react'
 import { Input } from '../components/Input'
-import { Form, FormContainer, Logo, Option, OptionLink, Title, Wrapper } from './styles'
+import { Form, FormContainer, GoogleLoginButton, GoogleLogo, Logo, Option, OptionLink, Title, Wrapper } from './styles'
 import CustomButton from '../components/CustomButton'
 import { useNavigate } from 'react-router-dom'
 import Auth from '../Auth'
 import userService from '../services/userServices'
 import { useUser } from '../context/userContext'
+import { useGoogleLogin } from '@react-oauth/google'
+import GoogleLogoUrl from '../assets/google.webp'
 
 
 interface UserCreds {
@@ -42,6 +44,19 @@ const Login = () => {
         setUserInfo(loggedInUser.data)
         navigate('/')
     }
+
+    const googleLogin = useGoogleLogin({
+        onSuccess: async tokenResponse => {
+            const body = {
+                accessToken: tokenResponse.access_token
+            }
+            const loggedInUser = await userService.googleLogin(body)
+
+            setUserInfo(loggedInUser.data)
+            navigate('/')
+        },
+    });
+
     return (
         <Auth>
             <Wrapper>
@@ -53,6 +68,9 @@ const Login = () => {
                         <Input fieldType="password" label='Password' fieldVal={userCreds.password} handleSetVal={handleSetPassword} />
                         <CustomButton text='Submit' onClick={handleSubmit} />
                     </Form>
+                    <GoogleLoginButton onClick={() => googleLogin()}>
+                        <GoogleLogo src={GoogleLogoUrl} />Sign in with Google
+                    </GoogleLoginButton>
                     <Option>Don't have account? <OptionLink href='/register'>Register Here</OptionLink></Option>
 
                 </FormContainer>

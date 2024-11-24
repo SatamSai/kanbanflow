@@ -29,6 +29,10 @@ class TaskServices extends BaseApiService {
     getSubTasks = (taskId: string) => {
         return this.makeAPICall(`/tasks/${taskId}/getSubTasks`, 'GET')
     }
+
+    assignTask = (taskId: string, data: Object) => {
+        return this.makeAPICall(`/tasks/${taskId}/assignTask`, 'PATCH', data)
+    }
 }
 
 const taskService = new TaskServices()

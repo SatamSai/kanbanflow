@@ -31,6 +31,9 @@ export interface Task {
     createdBy?: User,
     subTasks?: Task[],
     priority: string,
+    assignedTo: {
+        fullname: string
+    },
     updatedAt: Date,
     status: string
 }
@@ -74,6 +77,7 @@ export type TaskReducerAction = {
 export interface BoardContextState {
     usersAllBoards: Board[],
     currentBoard?: Board;
+    permissionLevel: number,
     editableBoard?: Board;
     boardInviteInfo?: Invite,
     updateCurrentBoardAllTasks: (selectedBoard: string) => void,
@@ -81,6 +85,7 @@ export interface BoardContextState {
     fetchMembers: (selectedBoard: string) => void,
     setUserAllBoards: () => void;
     setCurrentBoard: (_board?: Board) => void;
+    setCurrentBoardPermissionLevel: (_level: number) => void,
     updateTask: (_task: Task) => void,
     setEditableBoard: (_board?: Board) => void;
     deleteTask: (_taskId: string) => void
@@ -103,6 +108,9 @@ export type BoardReducerAction = {
 } | {
     type: "SET_BOARD_INVITE",
     payload: Invite | undefined
+} | {
+    type: "SET_PERMISSION_LEVEL",
+    payload: number
 }
 
 export interface ModalContextState {
