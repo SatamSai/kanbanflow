@@ -147,5 +147,6 @@ export const GoogleLoginButton = styled.button`
     @media (max-width: 450px) {
         height: 30px;
         font-size: 9.5px;
+        margin: 5px 20px;
     }
 `

@@ -21,5 +21,6 @@ export const Button = styled.button`
     @media (max-width: 450px) {
         height: 30px;
         font-size: 9.5px;
+        margin-top: 10px;
     }
 `

@@ -173,7 +173,7 @@ const handleLogoutUser = async (req, res) => {
     }
 
     return res.status(200)
-        .clearCookie("accessToken", options)
+        .cookie("accessToken", "", options)
         .json({
             message: "User Loggedout Successfully"
         })
